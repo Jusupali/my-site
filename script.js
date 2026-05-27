@@ -871,16 +871,44 @@ if (logoLink) {
 document.querySelectorAll('header nav a').forEach(a => {
     a.addEventListener('click', (e) => {
         const href = a.getAttribute('href');
-        if (!href || href.startsWith('#') || a.target === '_blank') return;
-        // allow same-page anchor links without fade
+        if (!href || a.target === '_blank') return;
+
+        let url;
         try {
-            const url = new URL(href, window.location.href);
-            if (url.origin !== window.location.origin) return;
-            if (url.pathname === window.location.pathname && url.hash) return;
+            url = new URL(href, window.location.href);
         } catch (err) {
-            // if invalid URL, skip
             return;
         }
+
+        if (url.origin !== window.location.origin) return;
+
+        const currentPage = window.location.pathname.split('/').pop().toLowerCase();
+        const targetPage = url.pathname.split('/').pop().toLowerCase();
+        const isHomePage = currentPage === '' || currentPage === 'index.html' || currentPage === 'index.htm';
+        const targetIsHome = targetPage === '' || targetPage === 'index.html' || targetPage === 'index.htm';
+        const hash = url.hash;
+
+        if (isHomePage && targetIsHome) {
+            e.preventDefault();
+            if (!hash || hash === '' || hash === '#top') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                history.replaceState(null, '', '#top');
+                return;
+            }
+
+            const targetElement = document.querySelector(hash);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+                history.replaceState(null, '', hash);
+                return;
+            }
+        }
+
+        if (url.pathname === window.location.pathname && hash) {
+            // Same-page anchor on non-home pages should navigate normally
+            return;
+        }
+
         e.preventDefault();
         navigateWithFade(href);
     });
