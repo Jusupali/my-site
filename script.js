@@ -872,10 +872,11 @@ document.querySelectorAll('header nav a').forEach(a => {
     a.addEventListener('click', (e) => {
         const href = a.getAttribute('href');
         if (!href || href.startsWith('#') || a.target === '_blank') return;
-        // allow external links
+        // allow same-page anchor links without fade
         try {
             const url = new URL(href, window.location.href);
             if (url.origin !== window.location.origin) return;
+            if (url.pathname === window.location.pathname && url.hash) return;
         } catch (err) {
             // if invalid URL, skip
             return;
