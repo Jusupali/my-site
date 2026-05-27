@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог — LuxDrive</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <a href="index.html#top" class="logo" id="logoLink">LuxDrive</a>
+    <nav>
+        <a href="index.html" data-i18n="navHome">Главная</a>
+        <a href="catalog.html" data-i18n="navCars">Автомобили</a>
+        <a href="index.html#about" data-i18n="navAbout">О нас</a>
+        <a href="index.html#contacts" data-i18n="navContacts">Контакты</a>
+    </nav>
+    <div class="user-area">
+        <button id="loginBtn" class="login-btn" data-i18n="loginBtn">Войти</button>
+        <img id="userAvatar" src="" alt="avatar" style="display:none;" />
+        <span id="usernameDisplay"></span>
+        <button id="logoutBtn" class="logout-btn" style="display:none;" data-i18n="logoutBtn">Выйти</button>
+    </div>
+    <div class="settings">
+        <button id="themeBtn" class="setting-btn">Тёмная тема</button>
+        <button id="languageBtn" class="setting-btn">EN</button>
+        <select id="currencySelect" class="setting-btn currency-select">
+            <option value="USD">USD</option>
+            <option value="RUB">RUB</option>
+            <option value="KZT">KZT</option>
+        </select>
+    </div>
+</header>
+
+<section class="hero catalog-hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <h1>Каталог LuxDrive</h1>
+        <p>В этом разделе вы найдёте все наши автомобили собранные в одном месте: удобные фильтры, скоростной поиск и полные характеристики.</p>
+        <p>Каждый автомобиль проверен нашим салоном, и мы готовы предложить персональные условия покупки, кредит или рассрочку.</p>
+    </div>
+</section>
+
+<section class="cars" id="cars">
+    <h2 data-i18n="carsHeading">Популярные автомобили</h2>
+    <div class="catalog">
+        <aside class="sidebar">
+            <div class="search-sort">
+                <div class="search-box">
+                    <input id="searchInput" type="text" placeholder="Поиск по моделям" data-i18n-placeholder="searchPlaceholder" />
+                </div>
+                <div class="sort-box">
+                    <label for="sortSelect" data-i18n="sortLabel">Сортировать:</label>
+                    <select id="sortSelect">
+                        <option value="default" data-i18n="sortDefault">По умолчанию</option>
+                        <option value="priceAsc" data-i18n="sortPriceAsc">Цена ↑</option>
+                        <option value="priceDesc" data-i18n="sortPriceDesc">Цена ↓</option>
+                        <option value="yearDesc" data-i18n="sortYearDesc">Год ↓</option>
+                        <option value="yearAsc" data-i18n="sortYearAsc">Год ↑</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all" data-i18n="filterAll">Все</button>
+                <button class="filter-btn" data-filter="sport" data-i18n="filterSport">Спорткары</button>
+                <button class="filter-btn" data-filter="electric" data-i18n="filterElectric">Электро</button>
+                <button class="filter-btn" data-filter="luxury" data-i18n="filterLuxury">Люкс</button>
+            </div>
+            <div class="price-filter">
+                <h3>Цена</h3>
+                <div class="price-range">
+                    <input id="priceMin" type="number" min="0" placeholder="От">
+                    <input id="priceMax" type="number" min="0" placeholder="До">
+                </div>
+                <div class="price-filter-help">Диапазон в выбранной валюте</div>
+            </div>
+            <div class="pagination-controls">
+                <button type="button" class="page-btn page-prev">&lt;</button>
+                <button type="button" class="page-btn page-number active" data-page="1">1</button>
+                <button type="button" class="page-btn page-number" data-page="2">2</button>
+                <button type="button" class="page-btn page-next">&gt;</button>
+            </div>
+        </aside>
+        <div class="car-container">
+            <div class="car-card" data-category="sport" data-title="Rolls-Royce Wraith" data-price="$350,000" data-description="Rolls-Royce Wraith — ультралюксовый гран-турер с исключительной отделкой." data-description-en="The Rolls-Royce Wraith is an ultra-luxury grand tourer with exquisite craftsmanship." data-image2="https://source.unsplash.com/800x480/?Rolls-Royce%20Wraith">
+                <img src="https://cdn.motor1.com/images/mgl/13jgw/s1/rolls-royce-black-badge-wraith-by-spofec.webp" alt="Rolls-Royce Wraith">
+                <h3>Rolls-Royce Wraith</h3>
+                <p>V12 • Ultra Luxury</p>
+                <div class="car-price">$350,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="sport" data-title="Lamborghini Huracan" data-price="$210,000" data-description="Lamborghini Huracan — чистая динамика и агрессивный дизайн для драйверов." data-description-en="The Lamborghini Huracan delivers pure dynamics and aggressive design for driving enthusiasts." data-image2="https://source.unsplash.com/800x480/?Lamborghini%20Huracan">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Lamborghini_Huracan_20150525_7811.jpg" alt="Lamborghini Huracan">
+                <h3>Lamborghini Huracan</h3>
+                <p>610 HP • Supercar</p>
+                <div class="car-price">$210,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="sport" data-title="Ferrari SF90" data-price="$625,000" data-description="Ferrari SF90 — сочетание гонки и долгожданных технологий." data-description-en="The Ferrari SF90 blends racing performance with cutting-edge tech." data-image2="https://source.unsplash.com/800x480/?Ferrari%20SF90">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/13/Red_2019_Ferrari_SF90_Stradale_%2848264238897%29_%28cropped%29.jpg" alt="Ferrari SF90">
+                <h3>Ferrari SF90</h3>
+                <p>986 HP • Hybrid Supercar</p>
+                <div class="car-price">$625,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="sport" data-title="McLaren Artura" data-price="$225,000" data-description="McLaren Artura сочетает легкость и мощь гибрида." data-description-en="The McLaren Artura combines lightweight agility with hybrid power." data-image2="https://source.unsplash.com/800x480/?McLaren%20Artura">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/2021_Black_McLaren_Artura.jpg" alt="McLaren Artura">
+                <h3>McLaren Artura</h3>
+                <p>671 HP • Hybrid Speed</p>
+                <div class="car-price">$225,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="luxury" data-title="Aston Martin DB11" data-price="$215,000" data-description="Aston Martin DB11 — элегантный GT с мощным двигателем." data-description-en="The Aston Martin DB11 is an elegant GT with a powerful engine." data-image2="https://source.unsplash.com/800x480/?Aston%20Martin%20DB11">
+                <img src="https://astonmartin.ru/models/db11-family/db11_coupe/DB11-35-sm.jpg" alt="Aston Martin DB11">
+                <h3>Aston Martin DB11</h3>
+                <p>630 HP • Grand Tourer</p>
+                <div class="car-price">$215,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="electric" data-title="Porsche Taycan Turbo" data-price="$185,000" data-description="Porsche Taycan Turbo — электрическая динамика с легендарным шасси." data-description-en="The Porsche Taycan Turbo brings electric dynamism with legendary chassis." data-image2="https://source.unsplash.com/800x480/?Porsche%20Taycan%20Turbo">
+                <img src="https://a.storyblok.com/f/322327/1700x1300/a94bdd6a4c/ta24q3eix0002-taycan-turbo-s-front.jpg/m/990x673/smart/filters:format(webp)?dpl=dpl_4zLeT35suAFVBsHiujymMkvT2NuM.jpg" alt="Porsche Taycan Turbo">
+                <h3>Porsche Taycan Turbo</h3>
+                <p>750 HP • Electric GT</p>
+                <div class="car-price">$185,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="sport" data-title="Nissan GT-R" data-price="$115,000" data-description="Nissan GT-R — японская легенда скорости и контроля." data-description-en="The Nissan GT-R is a Japanese legend of speed and control." data-image2="https://source.unsplash.com/800x480/?Nissan%20GTR">
+                <img src="https://cdn.motor1.com/images/mgl/G3nB8q/s3/nissan-gt-r-t-spec-takumi-edition.jpg" alt="Nissan GT-R">
+                <h3>Nissan GT-R</h3>
+                <p>565 HP • Super GT</p>
+                <div class="car-price">$115,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="sport" data-title="Jaguar F-Type" data-price="$100,000" data-description="Jaguar F-Type — дерзкий британский спорткар." data-description-en="The Jaguar F-Type is a bold British sports car." data-image2="https://source.unsplash.com/800x480/?Jaguar%20F-Type">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/2017_Jaguar_F-Type_V6_R-Dynamic_Automatic_3.0_Front.jpg" alt="Jaguar F-Type">
+                <h3>Jaguar F-Type</h3>
+                <p>575 HP • R Performance</p>
+                <div class="car-price">$100,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="luxury" data-title="Lexus LC500" data-price="$100,000" data-description="Lexus LC500 — роскошное купе с японским комфортом." data-description-en="The Lexus LC500 is a luxury coupe with Japanese comfort." data-image2="https://source.unsplash.com/800x480/?Lexus%20LC500">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/2023_Lexus_LC500_in_Atomic_Silver%2C_front_left.jpg" alt="Lexus LC500">
+                <h3>Lexus LC500</h3>
+                <p>471 HP • Luxury Coupe</p>
+                <div class="car-price">$100,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="electric" data-title="BMW i8" data-price="$150,000" data-description="BMW i8 представляет будущее электромобилей премиум-класса." data-description-en="The BMW i8 represents the future of premium electric cars." data-image2="https://source.unsplash.com/800x480/?BMW%20i8">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/2016_BMW_i8.jpg" alt="BMW i8">
+                <h3>BMW i8</h3>
+                <p>369 HP • Plug-in Hybrid</p>
+                <div class="car-price">$150,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="luxury" data-title="Audi RS7" data-price="$120,000" data-description="Audi RS7 — универсальное роскошное спорт-купе." data-description-en="The Audi RS7 is a versatile luxury sport coupe." data-image2="https://source.unsplash.com/800x480/?Audi%20RS7">
+                <img src="https://www.mansory.com/cdn-cgi/image/format=avif,quality=90/https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/6818bd66e807a051a942382a_Audi%2520RS7-Exterior_-_Main_image-001.webp" alt="Audi RS7">
+                <h3>Audi RS7</h3>
+                <p>591 HP • Sportback</p>
+                <div class="car-price">$120,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="electric" data-title="Mercedes EQS" data-price="$130,000" data-description="Mercedes EQS — роскошь в электрокаре с дальним пробегом." data-description-en="The Mercedes EQS is electric luxury with long range." data-image2="https://source.unsplash.com/800x480/?Mercedes%20EQS">
+                <img src="https://electrodrivemoscow.ru/upload/iblock/a0e/02n5j4y2rrejafxkrgtsbhguxy0dkwre.jpg" alt="Mercedes EQS">
+                <h3>Mercedes EQS</h3>
+                <p>516 HP • Electric Luxury</p>
+                <div class="car-price">$130,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="luxury" data-title="Cadillac CT5-V" data-price="$95,000" data-description="Cadillac CT5-V — американский спортседан класса люкс." data-description-en="The Cadillac CT5-V is an American luxury sport sedan." data-image2="https://source.unsplash.com/800x480/?Cadillac%20CT5-V">
+                <img src="https://cdn.motor1.com/images/mgl/40EzrM/s3/2025-cadillac-ct5-v-blackwing-precision-package.jpg" alt="Cadillac CT5-V">
+                <h3>Cadillac CT5-V</h3>
+                <p>668 HP • Sport Sedan</p>
+                <div class="car-price">$95,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="sport" data-title="Chevrolet Corvette" data-price="$85,000" data-description="Chevrolet Corvette — американский спорткар с V8." data-description-en="The Chevrolet Corvette is an American V8 sports car." data-image2="https://source.unsplash.com/800x480/?Chevrolet%20Corvette">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Chevrolet_Corvette_C8_IAA_2021_1X7A0156.jpg" alt="Chevrolet Corvette">
+                <h3>Chevrolet Corvette</h3>
+                <p>495 HP • V8 Sports</p>
+                <div class="car-price">$85,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="sport" data-title="Ford Mustang Shelby" data-price="$80,000" data-description="Ford Mustang Shelby — классический американский мускул-кар." data-description-en="The Ford Mustang Shelby is a classic American muscle car." data-image2="https://source.unsplash.com/800x480/?Ford%20Mustang%20Shelby">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Shelby_GT500KR_at_NYIAS.jpg" alt="Ford Mustang Shelby">
+                <h3>Ford Mustang Shelby</h3>
+                <p>760 HP • Muscle Icon</p>
+                <div class="car-price">$80,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="luxury" data-title="Porsche Panamera" data-price="$110,000" data-description="Porsche Panamera — роскошный лифтбек с драйверским характером." data-description-en="The Porsche Panamera is a luxury liftback with driver attitude." data-image2="https://source.unsplash.com/800x480/?Porsche%20Panamera">
+                <img src="https://avatars.mds.yandex.net/get-verba/1030388/2a000001609757d57c452e066e042f071a45/auto_main" alt="Porsche Panamera">
+                <h3>Porsche Panamera</h3>
+                <p>620 HP • Executive Sport</p>
+                <div class="car-price">$110,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="electric" data-title="Rimac Nevera" data-price="$2,400,000" data-description="Rimac Nevera — самый быстрый электрический гиперкар." data-description-en="The Rimac Nevera is the fastest electric hypercar." data-image2="https://source.unsplash.com/800x480/?Rimac%20Nevera">
+                <img src="https://cdn.motor1.com/images/mgl/NGeYy2/s1/rimac-nevera-r.webp" alt="Rimac Nevera">
+                <h3>Rimac Nevera</h3>
+                <p>1,914 HP • Electric Hypercar</p>
+                <div class="car-price">$2,400,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="electric" data-title="Lucid Air" data-price="$105,000" data-description="Lucid Air — роскошный электроседан с большим запасом хода." data-description-en="The Lucid Air is a luxury electric sedan with long range." data-image2="https://source.unsplash.com/800x480/?Lucid%20Air">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/2022_Lucid_Air_Grand_Touring_in_Zenith_Red%2C_front_left.jpg" alt="Lucid Air">
+                <h3>Lucid Air</h3>
+                <p>620 HP • Luxury EV</p>
+                <div class="car-price">$105,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="luxury" data-title="Bentley Bentayga" data-price="$215,000" data-description="Bentley Bentayga — роскошный внедорожник для дальних поездок." data-description-en="The Bentley Bentayga is a luxury SUV for long journeys." data-image2="https://source.unsplash.com/800x480/?Bentley%20Bentayga">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Bentley_Bentayga_Diesel_%E2%80%93_Frontansicht%2C_24._Juni_2017%2C_D%C3%BCsseldorf.jpg/1280px-Bentley_Bentayga_Diesel_%E2%80%93_Frontansicht%2C_24._Juni_2017%2C_D%C3%BCsseldorf.jpg" alt="Bentley Bentayga">
+                <h3>Bentley Bentayga</h3>
+                <p>626 HP • Luxury SUV</p>
+                <div class="car-price">$215,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="electric" data-title="Tesla Model X" data-price="$110,000" data-description="Tesla Model X — электрокроссовер c автопилотом и просторным салоном." data-description-en="The Tesla Model X is an electric SUV with autopilot and spacious cabin." data-image2="https://source.unsplash.com/800x480/?Tesla%20Model%20X">
+                <img src="https://res.cloudinary.com/unix-center/image/upload/c_limit,dpr_3.0,f_auto,fl_progressive,g_center,h_240,q_auto:good,w_385/inno5xbcnmct5gl4xdgn.jpg" alt="Tesla Model X">
+                <h3>Tesla Model X</h3>
+                <p>670 HP • Electric SUV</p>
+                <div class="car-price">$110,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="sport" data-title="Bugatti Chiron" data-price="$3,000,000" data-description="Bugatti Chiron — супергиперкар для экстремального ускорения." data-description-en="The Bugatti Chiron is a hypercar for extreme acceleration." data-image2="https://source.unsplash.com/800x480/?Bugatti%20Chiron">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Bugatti_Chiron_1.jpg" alt="Bugatti Chiron">
+                <h3>Bugatti Chiron</h3>
+                <p>1,479 HP • Hypercar</p>
+                <div class="car-price">$3,000,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+            <div class="car-card" data-category="luxury" data-title="Maserati MC20" data-price="$210,000" data-description="Maserati MC20 — итальянский спортбайк с лифтбеком." data-description-en="The Maserati MC20 is an Italian supercar from Maserati." data-image2="https://source.unsplash.com/800x480/?Maserati%20MC20">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Maserati_MC20_IAA_2021_1X7A0087.jpg/1280px-Maserati_MC20_IAA_2021_1X7A0087.jpg" alt="Maserati MC20">
+                <h3>Maserati MC20</h3>
+                <p>621 HP • Italian Supercar</p>
+                <div class="car-price">$210,000</div>
+                <button class="card-wish-btn" title="Добавить в избранное">♡</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal" id="authModal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="authTitle" data-i18n="authTitle">Авторизация</h2>
+        <input type="text" id="username" placeholder="Имя пользователя" data-i18n-placeholder="usernamePlaceholder">
+        <input type="password" id="password" placeholder="Пароль" data-i18n-placeholder="passwordPlaceholder">
+        <div class="auth-actions">
+            <button id="register" data-i18n="registerBtn">Регистрация</button>
+            <button id="login" data-i18n="loginUserBtn">Войти</button>
+        </div>
+        <div id="authMessage" class="auth-message" role="status" aria-live="polite"></div>
+    </div>
+</div>
+
+<div class="modal" id="carModal">
+    <div class="car-modal-content">
+        <span class="close-car">&times;</span>
+        <div class="car-gallery">
+            <img id="carMainImage" src="" alt="main car">
+        </div>
+        <h2 id="carTitle"></h2>
+        <p id="carDescription"></p>
+        <div class="car-details">
+            <span id="carYear"></span>
+            <span id="carAdvantages"></span>
+        </div>
+        <div id="carFullDescription" class="car-full-description"></div>
+        <h3 id="carPrice"></h3>
+        <div class="finance-section">
+            <h3 data-i18n="financingHeading">Финансирование</h3>
+            <div class="finance-options">
+                <label><input type="radio" name="financeType" value="credit" checked> <span data-i18n="financeCredit">Кредит</span></label>
+                <label><input type="radio" name="financeType" value="installment"> <span data-i18n="financeInstallment">Рассрочка</span></label>
+            </div>
+            <div class="finance-slider">
+                <label for="financeYears"><span data-i18n="financeTerm">Срок:</span> <span id="financeYearsValue">3</span> <span data-i18n="financeYearsLabel">лет</span></label>
+                <input type="range" id="financeYears" min="1" max="10" value="3">
+            </div>
+            <div class="finance-summary">
+                <p id="financeRate"></p>
+                <p id="financeMonthly"></p>
+            </div>
+        </div>
+        <div class="car-modal-actions">
+            <button id="carWishlistBtn">Добавить в Wishlist</button>
+        </div>
+    </div>
+</div>
+
+<div class="chat-widget">
+    <button class="chat-toggle" aria-label="Открыть чат поддержки">💬</button>
+    <div class="chat-box">
+        <div class="chat-header">
+            <span>Онлайн сотрудник</span>
+            <button class="chat-close" aria-label="Закрыть чат">×</button>
+        </div>
+        <div class="chat-messages">
+            <div class="chat-message agent">Здравствуйте! Чем могу помочь?</div>
+        </div>
+        <form class="chat-form">
+            <input id="chatInput" type="text" placeholder="Ваш вопрос..." autocomplete="off" data-i18n-placeholder="chatPlaceholder" />
+            <button type="submit" data-i18n="chatSend">Отправить</button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

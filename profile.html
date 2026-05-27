@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Профиль — LuxDrive</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at 20% 50%, rgba(59,130,246,0.1), transparent), 
+                        radial-gradient(circle at 80% 80%, rgba(139,92,246,0.1), transparent),
+                        linear-gradient(180deg, #0f0f1e 0%, #1a1f3a 100%);
+            min-height: 100vh;
+            color: #e2e8f0;
+            padding: 20px;
+        }
+
+        .profile-page {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .profile-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-title {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .close-btn {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #94a3b8;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            background: rgba(255,255,255,0.12);
+            color: #e2e8f0;
+        }
+
+        .profile-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+
+        .profile-card {
+            background: linear-gradient(135deg, rgba(30,41,82,0.8), rgba(20,25,50,0.6));
+            border: 1px solid rgba(100,150,255,0.15);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .user-info {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .profile-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(96,165,250,0.4);
+            margin: 0 auto 20px;
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 10px 30px rgba(96,165,250,0.2);
+        }
+
+        .user-name {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #f1f5f9;
+        }
+
+        .user-status {
+            font-size: 14px;
+            color: rgba(226,232,240,0.6);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .quick-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .action-btn {
+            padding: 14px 20px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            color: white;
+        }
+
+        .action-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(96,165,250,0.3);
+        }
+
+        .action-btn.success {
+            background: linear-gradient(135deg, #34d399, #10b981);
+            color: white;
+        }
+
+        .action-btn.success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16,185,129,0.3);
+        }
+
+        .action-btn.danger {
+            background: linear-gradient(135deg, #f87171, #ef4444);
+            color: white;
+        }
+
+        .action-btn.danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(239,68,68,0.3);
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .file-input-wrapper input {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .status-message {
+            min-height: 20px;
+            font-size: 13px;
+            text-align: center;
+            color: #86efac;
+            margin-top: 8px;
+        }
+
+        .wishlist-section {
+            grid-column: 1 / -1;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '❤️';
+            font-size: 24px;
+        }
+
+        .wishlist-container {
+            background: linear-gradient(135deg, rgba(30,41,82,0.8), rgba(20,25,50,0.6));
+            border: 1px solid rgba(100,150,255,0.15);
+            border-radius: 24px;
+            padding: 28px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .wishlist-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .wishlist-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 18px;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wishlist-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .wishlist-item:hover {
+            background: rgba(96,165,250,0.12);
+            border-color: rgba(96,165,250,0.3);
+            transform: translateY(-4px);
+        }
+
+        .wishlist-item:hover::before {
+            left: 100%;
+        }
+
+        .item-title {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 10px;
+            color: #f1f5f9;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .item-btn {
+            flex: 1;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .item-btn.view {
+            background: rgba(96,165,250,0.2);
+            color: #60a5fa;
+        }
+
+        .item-btn.view:hover {
+            background: rgba(96,165,250,0.3);
+        }
+
+        .item-btn.remove {
+            background: rgba(239,68,68,0.2);
+            color: #ef4444;
+        }
+
+        .item-btn.remove:hover {
+            background: rgba(239,68,68,0.3);
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .quick-link {
+            background: linear-gradient(135deg, rgba(96,165,250,0.1), rgba(139,92,246,0.1));
+            border: 1px solid rgba(96,165,250,0.2);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #60a5fa;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .quick-link:hover {
+            background: linear-gradient(135deg, rgba(96,165,250,0.2), rgba(139,92,246,0.2));
+            border-color: rgba(96,165,250,0.4);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .profile-main {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-title {
+                font-size: 24px;
+            }
+
+            .wishlist-list {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-page">
+        <div class="profile-header-top">
+            <div class="profile-title">Мой профиль</div>
+            <button class="close-btn" id="closeWindow">✕</button>
+        </div>
+
+        <div class="profile-main">
+            <div class="profile-card">
+                <div class="user-info">
+                    <img id="avatarPreview" class="profile-avatar" src="" alt="avatar">
+                    <div class="user-name" id="profileName"></div>
+                    <div class="user-status">VIP клиент LuxDrive</div>
+                </div>
+
+                <div class="quick-actions">
+                    <label class="action-btn primary file-input-wrapper">
+                        <span>📷 Загрузить фото</span>
+                        <input id="fileInput" type="file" accept="image/*">
+                    </label>
+                    <button id="saveBtn" class="action-btn success">💾 Сохранить</button>
+                    <button id="clearWishlistBtn" class="action-btn danger">🗑️ Очистить избранное</button>
+                </div>
+
+                <div class="status-message" id="profileMessage"></div>
+            </div>
+
+            <div class="profile-card">
+                <div style="padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+                    <div style="font-size: 36px; font-weight: 700; background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;" id="statsWishlistCount">0</div>
+                    <div style="font-size: 14px; color: rgba(226,232,240,0.6); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 6px;">Автомобилей в избранном</div>
+                </div>
+                <div style="padding-top: 20px;">
+                    <div style="font-size: 13px; color: rgba(226,232,240,0.5); line-height: 1.8; margin-bottom: 16px;">
+                        ✅ Сохранённые автомобили отображаются в специальной папке<br>
+                        ✅ Быстро переходите в каталог и сравнивайте модели<br>
+                        ✅ Ваш список синхронизируется на всех устройствах
+                    </div>
+                    <a href="catalog.html" style="display: block; text-align: center; padding: 12px; background: linear-gradient(135deg, #60a5fa, #3b82f6); color: white; border-radius: 12px; text-decoration: none; font-weight: 600; transition: all 0.2s ease;" 
+                       onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 25px rgba(96,165,250,0.3)'"
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        📚 Перейти в каталог
+                    </a>
+                </div>
+            </div>
+
+            <div class="wishlist-section">
+                <div class="wishlist-container">
+                    <div id="wishlistList" class="wishlist-list"></div>
+                </div>
+            </div>
+
+            <!-- quick-links removed per request -->
+        </div>
+    </div>
+
+<script>
+(function(){
+    const avatarPreview = document.getElementById('avatarPreview');
+    const fileInput = document.getElementById('fileInput');
+    const saveBtn = document.getElementById('saveBtn');
+    const profileName = document.getElementById('profileName');
+    const wishlistList = document.getElementById('wishlistList');
+    const closeWindow = document.getElementById('closeWindow');
+    const profileMessage = document.getElementById('profileMessage');
+    const statsWishlistCount = document.getElementById('statsWishlistCount');
+    const bc = ('BroadcastChannel' in window) ? new BroadcastChannel('luxdrive') : null;
+    const language = localStorage.getItem('lang') || 'ru';
+
+    function init(){
+        const loggedUser = localStorage.getItem('loggedUser') || localStorage.getItem('username');
+        if (!loggedUser) {
+            window.location.href = 'index.html';
+            return;
+        }
+
+        const avatar = localStorage.getItem('avatar_' + loggedUser);
+        const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+
+        if (avatarPreview) {
+            avatarPreview.src = avatar || 'https://www.gravatar.com/avatar/?d=mp&s=240';
+            avatarPreview.onerror = () => {
+                avatarPreview.src = 'https://www.gravatar.com/avatar/?d=mp&s=240';
+            };
+        }
+
+        if (profileName) {
+            profileName.textContent = loggedUser;
+        }
+
+        renderWishlist(wishlist);
+        updateStats();
+    }
+
+    function updateStats(){
+        const count = JSON.parse(localStorage.getItem('wishlist') || '[]').length;
+        if (statsWishlistCount) statsWishlistCount.textContent = count;
+    }
+
+    function renderWishlist(list){
+        if (!wishlistList) return;
+        wishlistList.innerHTML = '';
+
+        if (!Array.isArray(list) || list.length === 0) {
+            wishlistList.innerHTML = '';
+            return;
+        }
+
+        list.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'wishlist-item';
+            div.innerHTML = `
+                <div class="item-title">${item}</div>
+                <div class="item-actions">
+                    <button class="item-btn view" type="button" data-action="view" data-title="${item}">Просмотр</button>
+                    <button class="item-btn remove" type="button" data-action="remove" data-title="${item}">Удалить</button>
+                </div>
+            `;
+            wishlistList.appendChild(div);
+        });
+    }
+
+    function removeFromWishlist(title){
+        let list = JSON.parse(localStorage.getItem('wishlist') || '[]');
+        list = list.filter(i => i !== title);
+        localStorage.setItem('wishlist', JSON.stringify(list));
+        renderWishlist(list);
+        updateStats();
+        if (bc) bc.postMessage({ type: 'wishlist-updated' });
+
+        try {
+            const token = localStorage.getItem('authToken');
+            if (token) {
+                fetch('/api/wishlist', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token
+                    },
+                    body: JSON.stringify({ wishlist: list })
+                }).catch(err => console.warn('Wishlist save error', err));
+            }
+        } catch (e) {
+            console.warn('Persist wishlist failed', e);
+        }
+    }
+
+    function clearWishlistConfirmed(){
+        if (!confirm('Очистить весь список? Это действие необратимо.')) return;
+        localStorage.setItem('wishlist', JSON.stringify([]));
+        renderWishlist([]);
+        updateStats();
+        if (bc) bc.postMessage({ type: 'wishlist-updated' });
+        
+        try {
+            const token = localStorage.getItem('authToken');
+            if (token) {
+                fetch('/api/wishlist', { 
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer '+token }, 
+                    body: JSON.stringify({ wishlist: [] }) 
+                }).catch(err => console.warn('Clear wishlist error', err));
+            }
+        } catch(e){}
+    }
+
+    if (fileInput) {
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(){
+                if (avatarPreview && reader.result) {
+                    avatarPreview.src = reader.result;
+                }
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+            const src = avatarPreview ? avatarPreview.src : '';
+            const loggedUser = localStorage.getItem('loggedUser') || localStorage.getItem('username');
+            if (src && loggedUser) {
+                localStorage.setItem('avatar_' + loggedUser, src);
+                if (bc) bc.postMessage({ type: 'avatar-updated', user: loggedUser, src: src });
+                if (profileMessage) {
+                    profileMessage.textContent = '✅ Аватар сохранён';
+                    setTimeout(() => { profileMessage.textContent = ''; }, 2500);
+                }
+            }
+        });
+    }
+
+    if (wishlistList) {
+        wishlistList.addEventListener('click', (event) => {
+            const button = event.target.closest('button[data-action]');
+            if (!button) return;
+            event.preventDefault();
+            event.stopPropagation();
+            const action = button.dataset.action;
+            const title = button.dataset.title;
+            if (!title) return;
+            if (action === 'view') {
+                window.location.href = `catalog.html#open=${encodeURIComponent(title)}`;
+            } else if (action === 'remove') {
+                removeFromWishlist(title);
+            }
+        });
+    }
+
+    const clearBtn = document.getElementById('clearWishlistBtn');
+    if (clearBtn) clearBtn.addEventListener('click', clearWishlistConfirmed);
+
+    if (bc) {
+        bc.addEventListener('message', (event) => {
+            if (event.data.type === 'wishlist-updated') {
+                const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+                renderWishlist(wishlist);
+                updateStats();
+            }
+        });
+    }
+    
+    if (closeWindow) {
+        closeWindow.addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    }
+
+    init();
+})();
+</script>
+</body>
+</html>

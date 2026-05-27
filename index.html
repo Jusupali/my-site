@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxDrive</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header id="top">
+
+    <a href="#top" class="logo" id="logoLink">LuxDrive</a>
+
+    <nav>
+            <a href="index.html" data-i18n="navHome">Главная</a>
+            <a href="catalog.html" data-i18n="navCars">Автомобили</a>
+            <a href="index.html#about" data-i18n="navAbout">О нас</a>
+            <a href="index.html#contacts" data-i18n="navContacts">Контакты</a>
+    </nav>
+
+    <div class="user-area">
+        <button id="loginBtn" class="login-btn" data-i18n="loginBtn">Войти</button>
+        <img id="userAvatar" src="" alt="avatar" style="display:none;" />
+        <span id="usernameDisplay"></span>
+        <button id="logoutBtn" class="logout-btn" style="display:none;" data-i18n="logoutBtn">Выйти</button>
+    </div>
+
+    <div class="settings">
+        <button id="themeBtn" class="setting-btn">Тёмная тема</button>
+        <button id="languageBtn" class="setting-btn">EN</button>
+        <select id="currencySelect" class="setting-btn currency-select">
+            <option value="USD">USD</option>
+            <option value="RUB">RUB</option>
+            <option value="KZT">KZT</option>
+        </select>
+    </div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+
+        <h1 data-i18n="heroTitle">Премиальные автомобили будущего</h1>
+
+        <p data-i18n="heroText">Скорость. Стиль. Совершенство.</p>
+
+        <button class="explore-btn" id="catalogBtn" data-i18n="exploreBtn">
+            Смотреть каталог
+        </button>
+
+    </div>
+
+</section>
+
+<section class="home-highlights">
+    <div class="section-heading">
+        <span>Наши преимущества</span>
+        <h2>Почему LuxDrive выбирают клиенты</h2>
+        <p>Эксклюзивный подбор, премиальный сервис и гарантированное качество при каждом заказе.</p>
+    </div>
+
+    <div class="highlights-grid">
+        <div class="highlight-card">
+            <h3>Проверенные автомобили</h3>
+            <p>Каждый автомобиль проходит многоточечную проверку и подготовку перед продажей.</p>
+        </div>
+        <div class="highlight-card">
+            <h3>VIP-поддержка</h3>
+            <p>Персональный менеджер сопровождает вас от выбора до получения ключей.</p>
+        </div>
+        <div class="highlight-card">
+            <h3>Выгодные условия</h3>
+            <p>Финансирование, trade-in и рассрочка — всё подбираем под ваш бюджет.</p>
+        </div>
+        <div class="highlight-card">
+            <h3>Доставка и сервис</h3>
+            <p>Быстрая доставка, детайлинг и подготовка автомобиля уже включены.</p>
+        </div>
+    </div>
+</section>
+
+<section class="top-deals">
+    <div class="section-heading section-heading-light">
+        <span>Популярные модели</span>
+        <h2>Топ-предложения этого месяца</h2>
+        <p>Выбирайте из самых востребованных премиальных автомобилей с выгодными условиями покупки.</p>
+    </div>
+
+    <div class="top-deals-grid">
+        <article class="deal-card">
+            <img src="https://cdn.motor1.com/images/mgl/13jgw/s1/rolls-royce-black-badge-wraith-by-spofec.webp" alt="Rolls-Royce Wraith">
+            <div class="deal-copy">
+                <h3>Rolls-Royce Wraith</h3>
+                <p>Премиум-седан с V12, безупречной отделкой и эксклюзивными опциями для делового водителя.</p>
+                <a class="deal-btn" href="catalog.html" data-title="Rolls-Royce Wraith" data-price="350000">Посмотреть модель</a>
+            </div>
+        </article>
+        <article class="deal-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Lamborghini_Huracan_20150525_7811.jpg" alt="Lamborghini Huracan">
+            <div class="deal-copy">
+                <h3>Lamborghini Huracan</h3>
+                <p>Динамика и дерзкий стиль в каждой детали, идеально для тех, кто ценит эмоции и статус.</p>
+                <a class="deal-btn" href="catalog.html" data-title="Lamborghini Huracan" data-price="210000">Посмотреть модель</a>
+            </div>
+        </article>
+        <article class="deal-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Bentley_Bentayga_V8_%28FL%29_IMG_0005.jpg" alt="Bentley Bentayga">
+            <div class="deal-copy">
+                <h3>Bentley Bentayga</h3>
+                <p>Роскошный внедорожник для дальних поездок с лучшим сочетанием комфорта и мощности.</p>
+                <a class="deal-btn" href="catalog.html" data-title="Bentley Bentayga" data-price="220000">Посмотреть модель</a>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="testimonials">
+    <div class="section-heading">
+        <span>Отзывы</span>
+        <h2>Довольные клиенты о LuxDrive</h2>
+        <p>Реальные истории покупок и подтверждённое качество сервиса от наших клиентов.</p>
+    </div>
+
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <p>«Покупка прошла легко, автомобиль привезли через 2 дня. Все документы оформлены корректно, менеджер отвечал на любой вопрос.»</p>
+            <strong>— Дамир, Алматы</strong>
+        </div>
+        <div class="testimonial-card">
+            <p>«Выбор суперкара занял пару часов, сервис на высоте. Мне предложили лучшие условия по кредиту и гарантию на 2 года.»</p>
+            <strong>— Алина, Нур-Султан</strong>
+        </div>
+        <div class="testimonial-card">
+            <p>«Огромный ассортимент и понятная консультация. Автомобиль приехал в идеальном состоянии, я остался доволен.»</p>
+            <strong>— Руслан, Шымкент</strong>
+        </div>
+    </div>
+<section class="stats-banner">
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>500+</h3>
+            <p>проверенных автомобилей</p>
+        </div>
+        <div class="stat-card">
+            <h3>10</h3>
+            <p>лет опыта на рынке</p>
+        </div>
+        <div class="stat-card">
+            <h3>24/7</h3>
+            <p>поддержка клиентов</p>
+        </div>
+        <div class="stat-card">
+            <h3>98%</h3>
+            <p>удовлетворённых покупателей</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-banner">
+    <div class="cta-content">
+        <h2>Готовы подобрать идеальный автомобиль?</h2>
+        <p>Позвольте нам предложить лучшие варианты и сопровождать покупку на каждом этапе.</p>
+        <a class="cta-button" href="catalog.html">Перейти в каталог</a>
+    </div>
+</section>
+
+<!-- SHOWROOM FEATURED -->
+
+<section class="featured-showroom">
+
+    <h2>Наш автосалон — автомобили, в которых живёт история</h2>
+
+    <div class="featured-grid">
+
+        <article class="featured-card card-top-left">
+            <div class="featured-image">
+                <img src="https://mercedes-benz-astana.kz/upload/resize_cache/iblock/ea3/482_272_1/ea3ea003791296b7ff83c6e80518ae6e.jpeg" alt="Mercedes-AMG GT">
+            </div>
+            <div class="featured-copy">
+                <h3>Mercedes-AMG GT</h3>
+                <p>В нашем автосалоне Mercedes-AMG GT занимает особое место. Это машина для тех, кто ценит роскошь и мощь одновременно.</p>
+                <p>Мы предлагаем индивидуальный подбор, тест-драйв в комфортных условиях и помощь в оформлении кредита с выгодными условиями.</p>
+                <p>Каждый автомобиль проходит полную проверку, и вы получаете не только стильный спорткар, но и уверенность в качестве.</p>
+            </div>
+        </article>
+
+        <article class="featured-card card-center-right">
+            <div class="featured-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/2017_Lamborghini_Huracan_LP610.jpg" alt="Lamborghini Huracan">
+            </div>
+            <div class="featured-copy">
+                <h3>Lamborghini Huracan</h3>
+                <p>Эта модель — символ скорости и дерзости. Наш автосалон предлагает уникальные условия покупки для действительно избранных клиентов.</p>
+                <p>Вам доступен персональный менеджер, профессиональное сопровождение сделки и VIP-сервис при каждом визите.</p>
+                <p>Наши клиенты получают полную гарантию и расширенное сервисное обслуживание, чтобы автомобиль всегда оставался в идеальном состоянии.</p>
+            </div>
+        </article>
+
+        <article class="featured-card card-bottom-left">
+            <div class="featured-image">
+                <img src="https://cdn.motor1.com/images/mgl/13jgw/s1/rolls-royce-black-badge-wraith-by-spofec.webp" alt="Rolls-Royce Wraith">
+            </div>
+            <div class="featured-copy">
+                <h3>Rolls-Royce Wraith</h3>
+                <p>Rolls-Royce Wraith в нашем салоне — это не просто машина, это произведение искусства на колёсах.</p>
+                <p>Каждый клиент получает премиальный подход: от консультации до оформления документов и доставки авто до дома.</p>
+                <p>Мы заботимся о долгосрочных отношениях, поэтому в нашем салоне действуют программы лояльности и персональные предложения.</p>
+            </div>
+        </article>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <h2 data-i18n="aboutHeading">О нас</h2>
+
+    <div class="about-container">
+
+        <div class="about-card">
+
+            <h3 data-i18n="aboutCard1Title">Премиум качество</h3>
+
+            <p data-i18n="aboutCard1Text">
+                Мы предоставляем только лучшие автомобили мирового уровня
+                с гарантией качества и современными технологиями.
+            </p>
+
+        </div>
+
+        <div class="about-card">
+
+            <h3 data-i18n="aboutCard2Title">Современные технологии</h3>
+
+            <p data-i18n="aboutCard2Text">
+                LuxDrive использует инновационные решения для удобного
+                поиска и покупки автомобилей онлайн.
+            </p>
+
+        </div>
+
+        <div class="about-card">
+
+            <h3 data-i18n="aboutCard3Title">Быстрая поддержка</h3>
+
+            <p data-i18n="aboutCard3Text">
+                Наша команда работает 24/7 и всегда готова помочь
+                с выбором автомобиля.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACTS -->
+
+<section class="contacts" id="contacts">
+
+    <h2 data-i18n="contactsHeading">Контакты</h2>
+
+    <div class="contact-box">
+
+        <p>📞 +7 (777) 456-98-12</p>
+
+        <p>📞 +7 (701) 123-45-67</p>
+
+        <p>📧 luxdrive.sales@gmail.com</p>
+
+        <p>📍 ул. Абая, 125, Алматы, Kazakhstan</p>
+
+        <a class="map-button" href="https://www.google.com/maps/search/?api=1&query=%D1%83%D0%BB.%20%D0%90%D0%B1%D0%B0%D1%8F%2C%20125%2C%20%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D1%8B%2C%20Kazakhstan" target="_blank" rel="noreferrer">Открыть на карте</a>
+
+    </div>
+
+</section>
+
+<!-- AUTH MODAL -->
+
+<div class="modal" id="authModal">
+
+    <div class="modal-content">
+
+        <span class="close">&times;</span>
+
+        <h2 id="authTitle" data-i18n="authTitle">Авторизация</h2>
+
+        <input type="text" id="username" placeholder="Имя пользователя" data-i18n-placeholder="usernamePlaceholder">
+
+        <input type="password" id="password" placeholder="Пароль" data-i18n-placeholder="passwordPlaceholder">
+
+        <div class="auth-actions">
+            <button id="register" data-i18n="registerBtn">Регистрация</button>
+            <button id="login" data-i18n="loginUserBtn">Войти</button>
+        </div>
+
+        <div id="authMessage" class="auth-message" role="status" aria-live="polite"></div>
+
+    </div>
+
+</div>
+
+<!-- CAR MODAL -->
+
+<div class="modal" id="carModal">
+
+    <div class="car-modal-content">
+
+        <span class="close-car">&times;</span>
+
+        <div class="car-gallery">
+            <img id="carMainImage" src="" alt="main car">
+        </div>
+
+        <h2 id="carTitle"></h2>
+
+        <p id="carDescription"></p>
+
+        <div class="car-details">
+            <span id="carYear"></span>
+            <span id="carAdvantages"></span>
+        </div>
+
+        <div id="carFullDescription" class="car-full-description"></div>
+
+        <h3 id="carPrice"></h3>
+
+        <div class="finance-section">
+            <h3 data-i18n="financingHeading">Финансирование</h3>
+            <div class="finance-options">
+                <label><input type="radio" name="financeType" value="credit" checked> <span data-i18n="financeCredit">Кредит</span></label>
+                <label><input type="radio" name="financeType" value="installment"> <span data-i18n="financeInstallment">Рассрочка</span></label>
+            </div>
+            <div class="finance-slider">
+                <label for="financeYears"><span data-i18n="financeTerm">Срок:</span> <span id="financeYearsValue">3</span> <span data-i18n="financeYearsLabel">лет</span></label>
+                <input type="range" id="financeYears" min="1" max="10" value="3">
+            </div>
+            <div class="finance-summary">
+                <p id="financeRate"></p>
+                <p id="financeMonthly"></p>
+            </div>
+        </div>
+
+        <div class="car-modal-actions">
+            <button id="carWishlistBtn">Добавить в Wishlist</button>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- profile is a separate page (profile.html) opened in a new window -->
+
+<div class="chat-widget">
+    <button class="chat-toggle" aria-label="Открыть чат поддержки">💬</button>
+    <div class="chat-box">
+        <div class="chat-header">
+            <span>Онлайн сотрудник</span>
+            <button class="chat-close" aria-label="Закрыть чат">×</button>
+        </div>
+        <div class="chat-messages">
+            <div class="chat-message agent">Здравствуйте! Чем могу помочь?</div>
+        </div>
+        <form class="chat-form">
+            <input id="chatInput" type="text" placeholder="Ваш вопрос..." autocomplete="off" data-i18n-placeholder="chatPlaceholder" />
+            <button type="submit" data-i18n="chatSend">Отправить</button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
